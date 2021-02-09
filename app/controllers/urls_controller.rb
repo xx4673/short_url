@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_url, only: [:edit, :update]
+  before_action :find_url, only: [:edit, :update, :destory]
 
   def index
 	  @urls = current_user.urls
@@ -41,8 +41,9 @@ class UrlsController < ApplicationController
   end
 
   def add_click_count
-    @url = current_user.urls.find(params[:id])
+    @url = current_user.urls.find_by(id: params[:id] )
     @url.increment!(:click_count)
+    redirect_to @url.original_url
   end
   
   # def show
