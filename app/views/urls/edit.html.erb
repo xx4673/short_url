@@ -1,0 +1,12 @@
+<h1>Edit Shorten a URL</h1>
+<% @url.errors.each do|attr,msg| %>
+  <%= msg %> on <%= attr %>
+<% end %>
+
+<%= form_for @url do |f| %>
+  <p>
+    <%= f.label :original_url %> : <%= f.text_field :original_url, value: @url.original_url %>
+  </p>
+  <%= f.hidden_field :short_url, value: @url.short_url %>
+  <%= f.submit "Shorten my URL" %>
+<% end %>

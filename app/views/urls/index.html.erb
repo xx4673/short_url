@@ -1,0 +1,11 @@
+<h1>Url Shortener</h1>
+<% @urls.each do |url| %>
+  <p>
+    <%#= link_to url.short_url_id, url_path(id: url.short_url_id) %> #<%#= url.original_url %>
+    <%= link_to url.short_url,url.original_url %>--> <%= url.original_url %>    
+    <%= link_to 'edit',edit_url_path(url.id) %>
+    <%= link_to 'delete', url_path(url.id), method: :delete %>
+  </p>
+<% end %>
+
+<%= link_to "Shorten another URL", new_url_path %>
