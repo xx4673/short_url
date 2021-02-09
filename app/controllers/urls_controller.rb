@@ -44,7 +44,11 @@ class UrlsController < ApplicationController
   def add_click_count
     @url = current_user.urls.find_by(id: params[:id] )
     @url.increment!(:click_count)
-    redirect_to @url.original_url
+    if open(@url.original_url).status == ["200", "OK"]
+      redirect_to @url.original_url
+    else
+      redirect_to '/'
+    end
   end
   
   # def show

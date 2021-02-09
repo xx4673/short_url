@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
+gem 'public_suffix', '~> 4.0', '>= 4.0.6'
 gem 'paranoia', '~> 2.4', '>= 2.4.3'
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

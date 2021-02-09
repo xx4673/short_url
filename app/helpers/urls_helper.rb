@@ -1,2 +1,2 @@
-module UrlsHelper
+module UrlsHelper  
 end

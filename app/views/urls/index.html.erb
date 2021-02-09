@@ -2,10 +2,10 @@
 <% @urls.each_with_index do |url, index| %>
   <p>
     <%= index+1%> click_count:<%= url.click_count %>
-    <%= link_to url.short_url, add_click_count_url_path(url.id), method: 'post' %>    
+    <%= link_to url.short_url, add_click_count_url_path(url), method: 'post' %>    
     --> <%= url.original_url %>    
-    <%= link_to 'edit',edit_url_path(url.id) %>
-    <%= link_to 'delete', url_path(url.id), method: :delete%>
+    <%= link_to 'edit',edit_url_path(url) %>
+    <%= link_to 'delete', url_path(url), method: :delete%>
   </p>
 <% end %>
 
