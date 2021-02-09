@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_url, only: [:edit, :update, :destory]
+  before_action :find_url, only: [:edit, :update]
 
   def index
 	  @urls = current_user.urls
@@ -8,8 +8,9 @@ class UrlsController < ApplicationController
 
   def new
     @url = current_user.urls.new
-    letters = [('0'..'3'),('5'..'9')].map{|i| i.to_a}.flatten
-    @url.short_url = (0...4).map{ letters[rand(letters.length)]}.join
+    without_four = (0..9).select { |i| i != 4 }
+    # @url.short_url = rand(10 ** 4).to_s.rjust(4,'0')    
+    @url.short_url = without_four.sample(4).join("")
   end
 
   def create
@@ -60,6 +61,7 @@ class UrlsController < ApplicationController
   def urls_params
     params.require(:url).permit(:original_url, :short_url)
   end
+
   def find_url
     @url = current_user.urls.find(params[:id])      
   end    

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_061115) do
+ActiveRecord::Schema.define(version: 2021_02_09_132632) do
 
   create_table "urls", force: :cascade do |t|
     t.string "original_url"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_02_09_061115) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "click_count", default: 0
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_urls_on_deleted_at"
     t.index ["user_id"], name: "index_urls_on_user_id"
   end
 
