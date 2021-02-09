@@ -5,4 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Url.create
+require 'faker'
+25.times{Url.create!(original_url: Faker::Internet.url, short_url: Faker::Internet.url(path: "/#{(0..9).select { |i| i != 4 }.sample(4).join("")}"))}
